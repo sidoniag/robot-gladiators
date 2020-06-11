@@ -16,6 +16,11 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+var randomNumber = function(min, max) {
+  var value = Math.floor(Math.random() * (max - min + 1)) + 40;
+
+  return value;
+};
 
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -31,14 +36,16 @@ var fight = function(enemyName) {
       if (confirmSkip) {
         window.alert(playerName + ' has decided to skip this fight. Goodbye!');
         // subtract money from playerMoney for skipping
-        playerMoney = playerMoney - 10;
-        console.log("playerMoney", playerMoney)
+        playerMoney = Math.max(0, playerMoney - 10);
+        console.log("playerMoney", playerMoney);
         break;
       }
-    }
+    };
 
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
+    var damage = randomNumber(playerAttack - 3, playerAttack);
+    
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
     );
@@ -54,10 +61,10 @@ var fight = function(enemyName) {
       break;
     } else {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
-    }
+    };
 
     // remove players's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
     );
@@ -86,7 +93,7 @@ var startGame = function() {
 
       var pickedEnemyName = enemyNames[i];
 
-      enemyHealth = 50;
+      enemyHealth = randomNumber();
 
       fight(pickedEnemyName);
 
@@ -176,7 +183,7 @@ var startGame = function() {
   };
 
 // start the game when the page loads
-startGame();
+//startGame();
 
 //fight() {
  //window.alert("The fight has begun!");
