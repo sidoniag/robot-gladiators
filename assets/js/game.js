@@ -59,7 +59,7 @@ var fight = function(enemy) {
  
       enemy.health = Math.max(0, enemy.health - damage);
       console.log(
-      playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
+        playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
     );
 
     // check enemy's health
@@ -99,11 +99,7 @@ var fight = function(enemy) {
 var startGame = function() {
   // reset player stats
   playerInfo.reset();
-<<<<<<< HEAD
-  for(var i =0; i < enemyInfo.length; i++) {
-=======
   for (var i =0; i < enemyInfo.length; i++) {
->>>>>>> develop
     if (playerInfo.health > 0) {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
 
