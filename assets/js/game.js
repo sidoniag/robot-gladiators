@@ -207,7 +207,7 @@ var startGame = function() {
     upgradeAttack: function() {
       if (this.money >= 7){
         window.alert("Upgrading player's attack by 6 for 7 dollars.");
-        this.attck +=6;
+        this.attck += 6;
         this.money -= 7;
       }
       else {
